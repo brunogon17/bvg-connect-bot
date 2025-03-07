@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, CheckCircle } from 'lucide-react';
 
 interface CaseStudy {
   title: string;

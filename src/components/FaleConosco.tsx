@@ -9,6 +9,10 @@ interface FormData {
   city: string;
   description: string;
   additionalInfo: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
 }
 
 const FaleConosco: React.FC = () => {
@@ -17,6 +21,10 @@ const FaleConosco: React.FC = () => {
     city: '',
     description: '',
     additionalInfo: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,7 +48,16 @@ const FaleConosco: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      await sendContactForm(formData);
+      // Map our form data to match the expected ContactForm structure
+      const contactData = {
+        name: formData.name,
+        email: formData.email || '',
+        phone: formData.phone || '',
+        subject: formData.subject || 'Solicitação de Contato',
+        message: formData.description + (formData.additionalInfo ? '\n\nInformações adicionais: ' + formData.additionalInfo : '') + (formData.city ? '\n\nCidade: ' + formData.city : '')
+      };
+      
+      await sendContactForm(contactData);
       
       toast.success('Mensagem enviada com sucesso! Entraremos em contato em breve.');
       
@@ -50,6 +67,10 @@ const FaleConosco: React.FC = () => {
         city: '',
         description: '',
         additionalInfo: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
       });
     } catch (error) {
       toast.error('Erro ao enviar mensagem. Tente novamente mais tarde.');
