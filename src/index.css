@@ -75,6 +75,15 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 196 94% 48%;
+    
+    --sidebar-background: 222 47% 11.2%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 222 47% 11.2%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 196 94% 48%;
   }
 }
 
@@ -86,6 +95,18 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  html.dark .glass-panel {
+    @apply bg-black/70 border-white/10;
+  }
+
+  html.dark .section-padding {
+    @apply bg-background text-foreground;
+  }
+  
+  html.dark footer {
+    @apply bg-black text-white;
   }
 }
 
