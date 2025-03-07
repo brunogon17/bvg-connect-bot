@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronRight, Mail, Phone } from 'lucide-react';
 import ChatBot from './ChatBot';
+import ThemeToggle from './ThemeToggle';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -38,7 +39,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'bg-white/80 backdrop-blur-md shadow-sm py-3' 
+            ? 'bg-background/80 backdrop-blur-md shadow-sm py-3' 
             : 'bg-transparent py-5'
         }`}
       >
@@ -62,6 +63,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
+            <ThemeToggle />
             <Link 
               to="/contato" 
               className="button-primary"
@@ -73,17 +75,20 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               className="rounded-full bg-bvg-light/80 p-2 hover:bg-bvg-light border border-border"
               aria-label="Open chat"
             >
-              <Mail size={20} className="text-bvg-dark" />
+              <Mail size={20} className="text-bvg-dark dark:text-white" />
             </button>
           </div>
 
-          <button 
-            className="md:hidden focus:outline-none" 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
+            <button 
+              className="focus:outline-none" 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}
