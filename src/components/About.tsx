@@ -1,7 +1,6 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Award, Target, Cpu, Users, CheckCircle, ChevronRight } from 'lucide-react';
+import { Award, Target, Cpu, Users, CheckCircle, ChevronRight, Code, Bot } from 'lucide-react';
 
 const About: React.FC = () => {
   useEffect(() => {
